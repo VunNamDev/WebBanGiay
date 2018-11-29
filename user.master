@@ -1,0 +1,369 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="user.master.cs" Inherits="user" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+     <link rel="stylesheet" href="./css/header.css"/>
+     <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      .a-danhMuc{
+          color: rgb(51, 55, 69);
+         
+      }
+      .td{
+           height:45px;
+           text-align:center;
+      }
+      .td:hover{
+          background-color:#e4e7ea
+      }
+      .a-danhMuc:hover{
+             color: rgb(221, 0, 23);
+      }
+      a {
+        text-decoration: none;
+     
+      }
+         .tb {
+             
+         }
+      #top-menu span {
+        color: rgb(95, 104, 116);
+      }
+      #top-menu > li {
+        float: left;
+        line-height: 40px;
+        width: 100px;
+        text-align: center;
+        position: relative;
+      }
+      #top-menu > li:hover .sp1 {
+        color: rgb(221, 0, 23);
+      }
+      #top-menu > li:hover #top-dropdown {
+        display: block;
+      }
+      #top-dropdown {
+        
+        list-style: none;
+        position: absolute;
+        top: 40px;
+        left: -10px;
+        background-color: #4b5a71;
+
+        display: none;
+      }
+      #top-dropdown > li {
+        width: 129px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: #6a7f8c;
+           color: #fff;
+      }
+      #top-dropdown span {
+        color: #fff;
+
+      }
+      #top-dropdown > li:hover {
+        background-color: rgb(44, 89, 137);
+      }
+      .div-menu:hover {
+        background-color: rgb(221, 0, 23) !important;
+      }
+      .div-menu {
+            
+        background-color: rgb(44, 89, 137) !important;
+      }
+      .div-menu span{
+           color: #fff;
+      }
+      #bottom a{
+          color:#fff
+      }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+            <div id="top" style="width: 100%;background: rgb(244, 244, 244);box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.25);">
+      <div id="top-center" style="height: 120px;;width: 1024px;;margin: auto ;background: rgb(244, 244, 244) ">
+        <div
+          style="float: left;width: 256px;height: 123px;text-align: center;box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.25);"
+        >
+            <asp:LinkButton ID="btnHome2" runat="server" PostBackUrl="~/user/Home.aspx">
+                 <img style="margin-top: 20px" src="../css/image/logo.png" />
+            </asp:LinkButton>
+        </div>
+        <div style="float: left;width: 512px;height: 41px;box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.25);">
+          <ul id="top-menu" style="list-style: none;">
+            <li>
+                <asp:LinkButton ID="btnHome" runat="server" PostBackUrl="~/user/Home.aspx">
+                    <img src="../css/image/home.png" style="height: 13px;width: 13px" /><span class="sp1">Trang chủ</span>
+                </asp:LinkButton>          
+            </li>
+            <li>
+
+              <a> <img src="../css/image/user.png" style="height: 13px;width: 13px" /> <span class="sp1">Tài khoản</span> </a>
+              <ul id="top-dropdown">
+                <li>
+                    <asp:LinkButton ID="btnDangNhap" runat="server" PostBackUrl="~/user/DangNhap.aspx"> <span>Đăng nhập</span> </asp:LinkButton>
+               
+                </li>
+                <li>
+                    <asp:LinkButton ID="btnLichSu" runat="server"><span>Lịch sử mua hàng</span></asp:LinkButton>
+               
+                </li>
+                <li>
+                    <asp:LinkButton ID="btnDangKy" runat="server" PostBackUrl="~/user/DangKi.aspx"><span>Đăng kí</span></asp:LinkButton>
+                </li>
+                  <li>
+                    <asp:LinkButton ID="btnDangXuat" runat="server" PostBackUrl="~/user/Home.aspx" OnClick="btnDangXuat_Click"><span>Đăng xuất</span></asp:LinkButton>
+                </li>
+              </ul>
+            </li>
+            <li style="width: 110px">
+                <asp:LinkButton ID="btnCall" runat="server"><img src="../css/image/call.png" style="height: 13px;width: 13px" /> <span class="sp1">0973 711 868</span></asp:LinkButton>
+ 
+            </li>
+            <li style="width: 191px">
+                <asp:LinkButton ID="btnLienHe" runat="server"> <img src="../css/image/contact.png" style="height: 13px;width: 13px" /><span class="sp1">Liên hệ với Myshoes.vn</span> </asp:LinkButton>
+            </li>
+          </ul>
+        </div>
+        <div
+          style="text-align: center;line-height: 40px;float: left;width: 256px;height: 41px;box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.25);background-color: rgb(221, 0, 23);"
+        >
+            <asp:LinkButton ID="btnGioHang" runat="server" PostBackUrl="~/user/GioHang.aspx"><span style="color: #fff">Giỏ hàng</span></asp:LinkButton>
+        </div>
+        <div style="float: left;width: 430px;height: 41px;line-height: 40px">
+          <span style="margin-left: 10px">Chào mừng <asp:Label ID="lblTen" runat="server" Text="bạn"></asp:Label></span>
+        </div>
+        <div style="float: left;width: 338px;height: 41px;display: flex;align-items: center;">
+            <asp:TextBox  placeholder="Tìm kiếm theo tên" style="padding-left:5px;margin:5px;height: 30px;width: 200px;font-size: 14px; background-color: rgb(250, 250, 250);border-radius: 2px" ID="txtTimKiem" runat="server"></asp:TextBox>
+
+            <asp:LinkButton style="padding:0px 10px;display:flex;align-items:center;border: 1px solid rgba(221, 0, 23,0.7);border-radius: 2px;" ID="btnTim" runat="server"  OnClick="btnTim_Click">
+                <img style="margin:5px;width:20px;height:20px" src="../css/image/search.png" />
+                <span style="font-size:17px;color:rgb(221, 0, 23)" >Tìm kiếm</span>
+            </asp:LinkButton>
+        </div>
+        <div style="float: left;width: 768px;height: 41px;">
+          <div
+            class="div-menu"
+            style="width: 192px;height: 40px;float: left;line-height: 40px;text-align: center;background-color: #4b5a71;color: #fff"
+          >
+              <asp:LinkButton ID="btnNoiBat" runat="server" PostBackUrl="~/user/Home.aspx">
+                  <span>Sản phẩm nổi bật</span>
+              </asp:LinkButton>
+          </div>
+          <div
+            class="div-menu"
+            style="width: 192px;height: 40px;float: left;line-height: 40px;text-align: center;background-color: #4b5a71;color: #fff"
+          >
+              <asp:LinkButton ID="btnMoi" runat="server" PostBackUrl="~/user/Home.aspx">
+                  <span>Sản phẩm mới</span>
+              </asp:LinkButton>
+           
+          </div>
+          <div
+            class="div-menu"
+            style="width: 192px;height: 40px;float: left;line-height: 40px;text-align: center;background-color: #4b5a71;color: #fff"
+          >
+              <asp:LinkButton ID="btnBlog" runat="server" PostBackUrl="~/user/Blog.aspx">
+                  <span>Blog</span>
+              </asp:LinkButton>
+          
+          </div>
+          <div
+            class="div-menu"
+            style="width: 192px;height: 40px;float: left;line-height: 40px;text-align: center;background-color: #4b5a71;color: #fff"
+          >
+              <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/user/Sale.aspx">
+                 <span>Sale</span>
+              </asp:LinkButton>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  <div style="width: 1024px;background-color: #fff;margin: auto;box-shadow: 0 1px 15px 0 rgba(0, 0, 0, 0.25); ">
+            <table style="width: 224px;float: left;">
+            <tr style="width: 224px">
+                <td style="width: 224px">
+                    <div style="width: 224px ;   background-color: rgb(228, 228, 228);" >
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="maHangGiay" DataSourceID="sqlDanhMuc" AllowPaging="True" PageSize="7" Width="100%" CssClass="tb" CellPadding="4" ForeColor="#333333" GridLines="None">
+                            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+                            <Columns>
+                                <asp:HyperLinkField DataNavigateUrlFields="maHangGiay" DataNavigateUrlFormatString="~/user/Giay.aspx?maHangGiay={0}" DataTextField="tenHangGiay" HeaderText="DANH MỤC" NavigateUrl="~/user/Giay.aspx">
+                                <ControlStyle CssClass="a-danhMuc" />
+                                <ItemStyle CssClass="td" />
+                                </asp:HyperLinkField>
+                            </Columns>
+                            <EditRowStyle BackColor="#999999" />
+                            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+                        </asp:GridView>
+                    </div>
+                </td>
+               
+            </tr>
+            </table>         
+                <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+                        </asp:ContentPlaceHolder>
+         </div>
+
+
+    <div id="bottom" style="height:430px;width: 1024px;background-color: rgb(63, 87, 101);;margin: auto; ">
+      <div style="width: 100%;height: 85px;line-height: 85px">
+        <span style="color: #fff ;float: left;margin-left: 5px;margin-right: 10px"
+          >Đăng ký Email để nhận được rất nhiều những thông tin giá trị và nhiều ưu đãi hấp dẫn!
+        </span>
+        <div style="float: left;">
+          <div style="float: left;"><input style="width: 300px;height: 40px;" /></div>
+          <div
+            style="color: #fff;margin-left: 10px; height: 39px;width: 100px; background-color: rgb(221, 0, 23);line-height: 39px;float: left;margin-top: 25px;text-align: center"
+          >
+            Đăng ký
+          </div>
+        </div>
+      </div>
+      <div
+        style="width: 990px;height: 190px;background-color: rgb(51, 55, 69);color: #fff;padding: 10px;padding-right: 0px;padding-left: 34px"
+      >
+        <div style="float: left;height: 100%;width: 236px">
+          <h4>LIÊN HỆ</h4>
+          <div style="width: 200px;height: 1px;background-color: rgb(95, 104, 116);margin: 10px 0px"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">0973711868</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">388 Xã Đàn, Hà Nội</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">cskh@myshoes.vn</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Facebook</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Youtobe</span>
+          </a>
+        </div>
+        <div style="float: left;height: 100%;width: 236px">
+          <h4>THÔNG TIN MYSHOES.VN</h4>
+          <div style="width: 200px;height: 1px;background-color: rgb(95, 104, 116);margin: 10px 0px"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Giới thiệu Myshoes.vn</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">CS giao hàng và Thanh toán</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">CS bảo hành, đổi hàng</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Chính sách bảo mật</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Điều khoản sử dụng</span>
+          </a>
+        </div>
+        <div style="float: left;height: 100%;width: 236px">
+          <h4>TÀI KHOẢN</h4>
+          <div style="width: 200px;height: 1px;background-color: rgb(95, 104, 116);margin: 10px 0px"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Tài khoản</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">liên hệ với Myshoes.vn</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Lịch sử mua hàng</span>
+          </a>
+          <div style="height: 12px;width: 200px;"></div>
+          <a style="margin: 10px 0px">
+            <img src="../css/image/home.png" style="height: 13px;width: 13px;margin-right: 5px;" />
+            <span class="sp1">Trả lại</span>
+          </a>
+        </div>
+        <div style="float: left;height: 100%;width: 236px">
+          <h4>BẢN QUYỀN NỘI DUNG</h4>
+          <div style="width: 200px;height: 1px;background-color: rgb(95, 104, 116);margin: 10px 0px"></div>
+          <img src="../css/image/_dmca_premi_badge_2.png" />
+        </div>
+      </div>
+      <div style="width: 100%;height: 121px;">
+        <div style="width: 50%;height: 100%;float: left;padding-top: 10px">
+          <span style="padding: 10px;color: #E4E4E4;">CÔNG TY CP ĐẦU TƯ VÀ CÔNG NGHỆ MYGROUP</span>
+          <div style="height: 2px;width: 200px;"></div>
+          <span style=";padding: 10px;color: #E4E4E4;"
+            >Địa chỉ: 75 Chùa Láng, Láng Thượng, Đống Đa, Hà Nội</span
+          >
+
+          <div style="height: 2px;width: 200px;"></div>
+          <span style="font-size: 10;padding: 10px;color: #E4E4E4;"
+            >Đăng ký kinh doanh: 0108085873, ngày cấp: 12/12/2017</span
+          >
+          <div style="height: 15px;width: 200px;"></div>
+          <span style="font-size: 10;padding: 10px;color: #E4E4E4;">Showroom Hà Nội: 388 Xã Đàn, Đống Đa, Hà Nội</span>
+          <div style="height: 2px;width: 200px;"></div>
+          <span style="font-size: 10;padding: 10px;color: #E4E4E4;"
+            >Showroom HCM: 585/2 Sư Vạn Hạnh, P.13, Q.10, HCM</span
+          >
+        </div>
+        <div style="width: 50%;height: 100%;float: left;display: flex;align-items: center">
+          <img src="../css/image/dathongbao.png" /> <img src="../css/image/dmca.png" />
+        </div>
+      </div>
+    </div>     
+
+
+
+
+        
+        
+        
+        
+        
+
+    </form>
+    <asp:SqlDataSource ID="sqlDanhMuc" runat="server" ConnectionString="<%$ ConnectionStrings:DBWebBanGiayConnectionString %>" SelectCommand="SELECT * FROM [HangGiay]"></asp:SqlDataSource>
+</body>
+</html>
